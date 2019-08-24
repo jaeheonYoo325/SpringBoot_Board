@@ -14,7 +14,7 @@
 
 ● URL : SSL 적용하여 모든 url이 Https로 접근(https의 포트번호 지정)
 
-● 회원가입
+● 회원가입<br />
   - Client, Server Validation 체크 구현
   - 이메일 중복체크 구현
   - SHA 256 기반의 패스워드 암호화 구현
