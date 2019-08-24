@@ -15,27 +15,27 @@
 ● URL : SSL 적용하여 모든 url이 Https로 접근(https의 포트번호 지정)<br />
 
 ● 회원가입 <br />
-  ▲ Client, Server Validation 체크 구현 <br />
-  ▲ 이메일 중복체크 구현 <br />
-  ▲ SHA 256 기반의 패스워드 암호화 구현 <br /><br />
+&nbsp;▲ Client, Server Validation 체크 구현 <br />
+&nbsp;▲ 이메일 중복체크 구현 <br />
+&nbsp;▲ SHA 256 기반의 패스워드 암호화 구현 <br /><br />
 
 ● 로그인 <br />
-  ▲ Client, Server Validation 체크 구현 <br /><br />
+&nbsp;▲ Client, Server Validation 체크 구현 <br /><br />
 
 ● 게시판(CRUD) <br />
 &nbsp;▲ 게시글 LIST <br />
-    → 게시글 검색 및 검색 초기화 구현 <br />
-    → 게시글 페이지네이션 구현 <br /><br />
-  ▲ 게시글 WRITE <br />
-    → Client, Server Validation 체크 구현 <br />
-    → 파일업로드 구현(확장자:jpg, png, git) <br />
-  ▲ 게시글 DETAIL <br />
-    → 파일 다운로드 <br />
-    → 서로 다른 계정으로 게시글 읽었을 때 조회수 Count 구현 <br /><br />
-  ▲ 게시글 UPDATE <br />
-    → Client, Server Validation 체크 구현 <br />
-    → 파일업로드 구현(확장자:jpg, png, git) <br /><br />
-  ▲ 게시글 DELETE
+&nbsp;&nbsp;→ 게시글 검색 및 검색 초기화 구현 <br />
+&nbsp;&nbsp;→ 게시글 페이지네이션 구현 <br /><br />
+&nbsp;▲ 게시글 WRITE <br />
+&nbsp;&nbsp;→ Client, Server Validation 체크 구현 <br />
+&nbsp;&nbsp;→ 파일업로드 구현(확장자:jpg, png, git) <br />
+&nbsp;▲ 게시글 DETAIL <br />
+&nbsp;&nbsp;→ 파일 다운로드 <br />
+&nbsp;&nbsp;→ 서로 다른 계정으로 게시글 읽었을 때 조회수 Count 구현 <br /><br />
+&nbsp;▲ 게시글 UPDATE <br />
+&nbsp;&nbsp;→ Client, Server Validation 체크 구현 <br />
+&nbsp;&nbsp;→ 파일업로드 구현(확장자:jpg, png, git) <br /><br />
+&nbsp;▲ 게시글 DELETE
 
 
 
