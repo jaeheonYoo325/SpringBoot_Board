@@ -23,7 +23,7 @@
   ▲ Client, Server Validation 체크 구현 <br /><br />
 
 ● 게시판(CRUD) <br />
-  ▲ 게시글 LIST <br />
+&amp  ▲ 게시글 LIST <br />
     → 게시글 검색 및 검색 초기화 구현 <br />
     → 게시글 페이지네이션 구현 <br /><br />
   ▲ 게시글 WRITE <br />
