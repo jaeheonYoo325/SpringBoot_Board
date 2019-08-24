@@ -1,0 +1,96 @@
+@import url(https://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+@import url(https://fonts.googleapis.com/earlyaccess/hanna.css);
+@import url(https://fonts.googleapis.com/earlyaccess/notosanskr.css);
+* {
+	font-family: 'Nanum Gothic';
+}
+h5 {
+	font-family: 'Noto Sans KR';
+	font-size: 15px;
+}
+h4 {
+	font-family: 'Noto Sans KR';
+}
+h3 {
+	font-family: 'Hanna';
+}
+h2 {
+	font-family: 'Hanna';
+}
+h1 {
+	font-family: 'Hanna';
+}
+
+.navbar-default { 
+	background-color:#CC6900;
+	border-color: #CC6900;
+	border-bottom-color: #dddddd;
+	border-bottom-width: 3px;
+	border-radius: 0px;
+}
+.navbar-default .navbar-brand { 
+	color: #ffffff;
+	padding-top: 25px;
+	font-family: 'Hanna';
+}           
+.navbar-default .navbar-brand:hover,
+.navbar-default .navbar-focus { 
+	color: #dddddd;
+	background-color: transparent;
+}
+.navbar-default .navbar-nav > .active > a,
+.navbar-default .navbar-nav > .active > a:hover
+.navbar-default .navbar-nav > .active > a:focus { 
+	color: #ffffff;
+	background-color: #1456b8;
+}
+.navbar-default .navbar-nav > li > a {
+	color: white;
+	font-family: 'Noto Sans KR';
+}
+.navbar-default .navbar-nav > li > a:hover
+.navbar-default .navbar-nav > li > a:focus { 
+	color: #dddddd;
+}
+.navbar-default .navbar-nav > .open > a,
+.navbar-default .navbar-nav > .open > a:hover
+.navbar-default .navbar-nav > .open > a:focus { 
+	color: #CC6900;
+	text-decoration: none;
+	background-color: #ffffff;
+}
+.navbar-default .navbar-toggle:hover
+.navbar-default .navbar-toggle:focus { 
+	background-color: #1456B8;
+}
+.navbar-default .navbar-toggle .icon-bar { 
+	background-color: #dddddd;
+}
+@media (max-width: 767px) {
+	.navbar-default .navbar-nav .open .dropdown-menu > li > a {
+		color: #ffffff;
+	}
+	.navbar-default .navbar-nav .open .dropdown-menu > li > a:hover,
+	.navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
+		color: #eeeeee;
+	}
+}
+
+.navbar-fixed-top {
+	min-height: 70px;
+}
+.navbar-nav > li > a {
+	padding-top: 0px;
+	padding-bottom: 0px;
+	line-height: 70px;
+}
+@media(max-width: 767px) {
+	.navbar-default .navbar-brand {
+		padding-top: 15px;
+	}
+	.navbar-nav > li > a {
+		padding-top: 0px;
+		padding-bottom : 0px;
+		line-height: 40px;
+	}
+}

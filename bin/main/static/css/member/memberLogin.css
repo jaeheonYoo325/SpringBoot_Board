@@ -1,0 +1,26 @@
+@charset "UTF-8";
+
+.container {
+	margin-top: 50px;
+}
+
+.jumbotron {
+	padding-top:20px;
+}
+
+#loginForm .help-block {
+	display: none;
+}
+	  
+#loginForm .form-control-feedback {
+	display: none;
+}
+
+#successMessage {
+	display: none;
+} 
+
+.help-block {
+	color: red;
+}
+

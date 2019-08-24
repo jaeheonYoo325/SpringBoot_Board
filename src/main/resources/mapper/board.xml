@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.springboot.project.board.mapper.BoardMapper">
+
+	<insert id="insertOneBoard" parameterType="com.springboot.project.board.vo.BoardVO">
+		INSERT	INTO	BOARD	(
+											BOARD_ID											
+											, TITLE
+											, CONTENT
+											, HIT
+											, EMAIL
+											, WRT_DT
+											, MDFY_DT
+											, FILE_NAME
+											, ORIGIN_FILE_NAME
+										)
+		VALUES							(
+											BOARD_ID_SEQ.NEXTVAL											
+											, #{title}
+											, #{content}
+											, 0
+											, #{email}
+											, SYSDATE
+											, SYSDATE
+											, #{fileName}       
+											, #{originFileName}
+										)								  					   
+  	</insert>
+
+	<select id="selectOneBoard"
+  			parameterType="_int"
+  			resultMap="boardResultMap">
+  		
+  		SELECT	B.BOARD_ID  				
+  				, B.TITLE
+  				, B.CONTENT
+  				, B.EMAIL B_EMAIL
+  				, B.HIT
+  				, B.WRT_DT 
+  				, B.MDFY_DT
+  				, B.FILE_NAME       
+				, B.ORIGIN_FILE_NAME
+  				, M.EMAIL M_EMAIL
+  				, M.NAME
+		FROM	BOARD B
+				, MEMBER M
+		WHERE	B.EMAIL = M.EMAIL
+		AND		BOARD_ID = #{boardId}						  				
+  	</select>
+  	
+  	<resultMap type="com.springboot.project.board.vo.BoardVO" id="boardResultMap">
+		<id property="boardId" column="BOARD_ID" />		
+		<result property="title" column="TITLE" />
+		<result property="content" column="CONTENT" />
+		<result property="email" column="B_EMAIL" />
+		<result property="hit" column="HIT" />
+		<result property="wrtDt" column="WRT_DT" />
+		<result property="mdfyDt" column="MDFY_DT" />
+		<result property="fileName" column="FILE_NAME" />
+		<result property="originFileName" column="ORIGIN_FILE_NAME" />
+		
+		<association property="memberVO" javaType="com.springboot.project.member.vo.MemberVO">
+			<id property="email" column="M_EMAIL"/>
+			<result property="name" column="NAME"/>
+		</association>
+	</resultMap>
+	
+	<update id="updateHitOneBoard" parameterType="_int">
+  		UPDATE	BOARD
+  		SET		HIT = HIT + 1
+  		WHERE	BOARD_ID = #{boardId}		
+  	</update>
+  	 
+  	<update id="updateOneBoard" parameterType="com.springboot.project.board.vo.BoardVO">
+  		UPDATE	BOARD
+  		SET		TITLE = #{title}
+  				, CONTENT = #{content}
+  				, MDFY_DT = SYSDATE
+  				, FILE_NAME = #{fileName}
+  				, ORIGIN_FILE_NAME = #{originFileName}
+  		WHERE	BOARD_ID = #{boardId}	
+  	</update>
+  	 
+  	<delete id="deleteOneBoard" parameterType="_int">
+  		DELETE
+  		FROM	BOARD
+  		WHERE	BOARD_ID = #{boardId}
+  	</delete>
+  	
+  	<select id="selectAllBoardsCount" parameterType="com.springboot.project.board.vo.BoardSearchVO" resultType="_int">
+  		SELECT	COUNT(1)
+  		FROM	BOARD B
+  				, MEMBER M
+		WHERE	B.EMAIL = M.EMAIL
+		<if test="searchKeyword != null and searchKeyword != ''">
+		AND		TITLE LIKE '%' || #{searchKeyword} || '%'
+		</if>  				
+  	</select>
+  	
+  	<select id="selectAllBoards" parameterType="com.springboot.project.board.vo.BoardSearchVO" resultMap="boardResultMap">
+  	
+  		SELECT	*
+		FROM	(
+					SELECT	A.*
+							, ROWNUM RNUM
+					FROM	(
+								SELECT	B.BOARD_ID
+						  				, B.TITLE
+						  				, B.CONTENT
+						  				, B.EMAIL B_EMAIL
+						  				, B.HIT
+						  				, B.WRT_DT
+						  				, B.MDFY_DT
+						  				, M.EMAIL M_EMAIL
+						  				, M.NAME
+						  		FROM	BOARD B
+						  				, MEMBER M
+						  		WHERE	B.EMAIL = M.EMAIL
+						  		<if test="searchKeyword != null and searchKeyword != ''">
+						  		AND		TITLE LIKE '%' ||#{searchKeyword} || '%' 
+						  		</if>
+						  		ORDER	BY BOARD_ID DESC
+							) A
+					WHERE	ROWNUM <![CDATA[<=]]> #{endRow}
+				)
+		WHERE	RNUM >= #{startRow}
+    			
+  	</select> 
+</mapper>

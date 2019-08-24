@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN" "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+	
+	<!-- 레이아웃 -->	
+	<definition name="layout" template="/WEB-INF/tiles/layout/layout.jsp">
+		<put-attribute name="sessionHeader" value="/WEB-INF/pc/common/sessionHeader.jsp"/>
+		<put-attribute name="footer" value="/WEB-INF/pc/common/footer.jsp"/>
+	</definition>
+	
+	<definition name="errors/*" extends="layout">		
+		<put-attribute name="content" value="/WEB-INF/pc/errors/{1}.jsp"/>				
+	</definition>
+	
+	<!-- Content 레이아웃 -->
+	<definition name="*/*/*" extends="layout">
+		<put-attribute name="content" value="/WEB-INF/{1}/{2}/{3}.jsp"/>		
+	</definition>
+		
+</tiles-definitions>

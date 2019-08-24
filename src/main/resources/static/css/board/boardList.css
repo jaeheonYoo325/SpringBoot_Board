@@ -1,0 +1,21 @@
+@charset "UTF-8";
+
+.container {
+	width: 80%; 
+	margin: 0 auto;
+}
+
+.jumbotron {
+	background-size:cover;
+	color: white;
+}
+.panel-default > .panel-heading {
+	background-color: #006DCC;
+	color: white;
+	text-align: center;
+}
+.paginationDiv {
+	text-align: center;
+}
+
+

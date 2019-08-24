@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="com.springboot.project.member.mapper.MemberMapper">
+  	<insert id="insertOneMembers" parameterType="com.springboot.project.member.vo.MemberVO">
+  		INSERT INTO MEMBER	(
+								EMAIL
+								, NAME		
+								, PASSWORD	
+								, CRT_DT			
+								, SALT				
+								, IS_ADMIN_YN
+								, LATEST_LOGIN
+								, LOGIN_FAIL_COUNT				
+  						   	)
+		VALUES				(
+								#{email}
+								, #{name}
+								, #{password}
+								, SYSDATE
+								, #{salt}
+								, 'N'
+								, SYSDATE
+								, 0	
+							)  						   
+  	</insert>
+  	
+  	<select id="selectOneMembers"
+  			parameterType="com.springboot.project.member.vo.MemberVO"
+  			resultType="com.springboot.project.member.vo.MemberVO">
+  		
+  		SELECT	EMAIL
+  				, NAME
+  				, PASSWORD
+  				, IS_ADMIN_YN isAdminYn
+  				, LOGIN_FAIL_COUNT loginFailCount
+  		FROM	MEMBER
+  		WHERE	EMAIL = #{email}
+  		AND		PASSWORD = #{password}  		
+  	</select>
+  	
+  	<select id="selectOneMembersGetByEmail"
+  			parameterType="string"
+  			resultType="com.springboot.project.member.vo.MemberVO">
+  			
+  		SELECT	EMAIL
+  				, NAME
+  				, PASSWORD
+  				, IS_ADMIN_YN isAdminYn
+  				, LOGIN_FAIL_COUNT loginFailCount
+		FROM	MEMBER
+		WHERE	EMAIL = #{email}
+  	</select>
+  	
+  	<resultMap type="com.springboot.project.member.vo.MemberVO" id="MemberResultMap">
+  		<id property="email" column="EMAIL"/>
+  		<result property="name" column="NAME"/>
+  		<result property="password" column="PASSWORD"/>
+  		<result property="crtDt" column="CRT_DT"/>
+  		<result property="latestLogin" column="LATEST_LOGIN"/>
+  		<result property="salt" column="SALT"/>
+  		<result property="loginFailCount" column="LOGIN_FAIL_COUNT"/>
+  		<result property="isAdminYn" column="IS_ADMIN_YN"/>
+  		<result property="mdfyDt" column="MDFY_DT"/>
+  	</resultMap>
+  	
+  	<update id="updateOneMembers"
+  			parameterType="com.springboot.project.member.vo.MemberVO">
+  			
+  		UPDATE	MEMBER
+  		SET		PASSWORD  = #{password}
+  				, SALT = #{salt}
+  				, MDFY_DT = SYSDATE
+  		WHERE	EMAIL = #{email}
+  	</update>
+  	
+  	<select id="duplicateCheckMembers"
+  			parameterType="string"
+  			resultType="Integer">
+  		
+  		SELECT	COUNT(*)
+  		FROM	MEMBER
+  		WHERE	EMAIL = #{email}  	
+  	</select>
+  	
+  	<select id="getSaltByEmail"
+  			parameterType="com.springboot.project.member.vo.MemberVO"
+  			resultType="string">
+  			
+  		SELECT	SALT
+  		FROM	MEMBER
+  		WHERE	EMAIL = #{email}
+  	</select>
+  	
+  </mapper>

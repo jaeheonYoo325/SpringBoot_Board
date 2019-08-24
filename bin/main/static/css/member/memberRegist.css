@@ -1,0 +1,34 @@
+@charset "UTF-8";
+
+.container {
+	margin-top: 50px;
+	width: 30%;
+}
+
+.jumbotron {
+	padding-top:20px;
+}
+
+.legend {
+	text-align: center;
+}
+
+.buttonDiv {
+	text-align: center;
+}
+
+#registForm .help-block {
+	display: none;
+}
+	  
+#registForm .form-control-feedback {
+	display: none;
+}
+
+#successMessage {
+	display: none;
+}
+
+/* .help-block {
+	color: red;
+} */
